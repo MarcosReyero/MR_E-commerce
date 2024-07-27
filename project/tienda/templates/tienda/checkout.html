@@ -1,0 +1,13 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2>
+<form method="post" id="checkout-form">
+    {% csrf_token %}
+    <label for="direccion">Dirección de Envío:</label>
+    <input type="text" id="direccion" name="direccion" required>
+    <button type="submit">Realizar Pedido</button>
+</form>
+{% endblock %}

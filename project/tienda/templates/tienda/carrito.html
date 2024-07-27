@@ -1,0 +1,20 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}Carrito de Compras{% endblock %}
+
+{% block content %}
+<h2>Carrito de Compras</h2>
+<div class="carrito">
+    {% for item in carrito.productos.all %}
+    <div class="carrito-item">
+        <h3>{{ item.nombre }}</h3>
+        <p>Cantidad: {{ item.carritoproducto_set.first.cantidad }}</p>
+        <p>Precio: ${{ item.precio }}</p>
+        <p>Total: ${{ item.precio|multiply:item.carritoproducto_set.first.cantidad }}</p>
+        <button onclick="removerDelCarrito({{ item.id }})">Remover</button>
+    </div>
+    {% endfor %}
+</div>
+<p>Total a pagar: ${{ carrito.productos.aggregate(total=models.Sum('precio'))['total'] }}</p>
+<a href="{% url 'checkout' %}">Proceder al Checkout</a>
+{% endblock %}

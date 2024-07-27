@@ -1,0 +1,18 @@
+{% extends 'tienda/base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<h2>Productos Destacados</h2>
+<div class="productos">
+    {% for producto in productos %}
+        <div class="producto">
+            <h3>{{ producto.nombre }}</h3>
+            <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+            <p>{{ producto.descripcion }}</p>
+            <p>${{ producto.precio }}</p>
+            <a href="{% url 'producto_detalle' producto.id %}">Ver Detalles</a>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
