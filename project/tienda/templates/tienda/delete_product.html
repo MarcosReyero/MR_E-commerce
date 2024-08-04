@@ -1,0 +1,14 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+
+
+<form method="post">
+    <h2>Are you sure you want to delete {{ producto.nombre }}?</h2>
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'view_products' %}">Cancel</a>
+</form>
+
+
+{% endblock  %}

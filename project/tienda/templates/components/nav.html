@@ -3,5 +3,15 @@
         <li><a href="{% url 'home' %}">Inicio</a></li>
         <li><a href="{% url 'carrito' %}">Carrito</a></li>
         <li><a href="{% url 'checkout' %}">Checkout</a></li>
+
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Cerrar sesión</a></li>
+            {% if user.is_superuser %}
+                <li><a href="{% url 'admin_panel' %}">Panel de Administración</a></li>
+            {% endif %}
+        {% else %}
+            <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
+            <li><a href="{% url 'register' %}">Registrarse</a></li>
+        {% endif %}
     </ul>
 </nav>

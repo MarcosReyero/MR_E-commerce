@@ -1,0 +1,15 @@
+{% extends 'tienda/base.html' %}
+
+{% block content %}
+<h2>Products</h2>
+<ul>
+    {% for producto in productos %}
+    <li>
+        {{ producto.nombre }} - ${{ producto.precio }}
+        <a href="{% url 'edit_product' producto.id %}">Edit</a>
+        <a href="{% url 'delete_product' producto.id %}">Delete</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
