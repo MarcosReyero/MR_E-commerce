@@ -1,10 +1,42 @@
 {% extends 'tienda/base.html' %}
 
+{% load custom_filters %}
+
 {% block content %}
-<h2>Add Product</h2>
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Product</button>
-</form>
+<div class="add-product">
+    <h2>Add Product</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="{{ form.nombre.id_for_label }}">Name:</label>
+            {{ form.nombre }}
+        </div>
+        <div>
+            <label for="{{ form.descripcion.id_for_label }}">Description:</label>
+            {{ form.descripcion|add_class:"form-textarea" }}
+        </div>
+        <div>
+            <label for="{{ form.precio.id_for_label }}">Price:</label>
+            {{ form.precio }}
+        </div>
+        <div>
+            <label for="{{ form.imagen.id_for_label }}">Image:</label>
+            {{ form.imagen }}
+        </div>
+        <div>
+            <label for="{{ form.stock.id_for_label }}">Stock:</label>
+            {{ form.stock }}
+        </div>
+        <div>
+            <label for="{{ form.categoria.id_for_label }}">Category:</label>
+            {{ form.categoria }}
+        </div>
+        <div>
+            <label for="{{ form.nueva_categoria.id_for_label }}">New Category:</label>
+            {{ form.nueva_categoria }}
+        </div>
+        <button type="submit">Add Product</button>
+    </form>
+</div>
+<script src="{% static 'js/resize-textarea.js' %}"></script>
 {% endblock %}

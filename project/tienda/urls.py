@@ -15,4 +15,13 @@ urlpatterns = [
     path('carrito/', views.carrito, name='carrito'),
     path('checkout/', views.checkout, name='checkout'),
     path('api/', include(router.urls)),
-]
+    path('login/', views.login_view, name='login'),
+    path('register/', views.register_view, name='register'),
+    path('logout/', views.logout_view, name='logout'),
+    path('admin-custom/', views.admin_panel, name='admin_panel'), 
+    path('add-product/', views.add_product, name='add_product'),  
+    path('view-products/', views.view_products, name='view_products'),  
+    path('edit-product/<int:pk>/', views.edit_product, name='edit_product'),
+    path('delete-product/<int:pk>/', views.delete_product, name='delete_product'),]
+
+

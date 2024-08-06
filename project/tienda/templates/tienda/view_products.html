@@ -6,8 +6,8 @@
     {% for producto in productos %}
     <li>
         {{ producto.nombre }} - ${{ producto.precio }}
-        <a href="{% url 'edit_product' producto.id %}">Edit</a>
-        <a href="{% url 'delete_product' producto.id %}">Delete</a>
+        <a href="{% url 'edit_product' producto.pk %}">Edit</a>
+        <a href="{% url 'delete_product' producto.pk %}">Delete</a>
     </li>
     {% endfor %}
 </ul>
